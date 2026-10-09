@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Arbaz - Software Engineer & App Developer</title>
+    <title>Muhammad Arbaz | Flutter, WordPress & Web Developer</title>
+    <meta name="description" content="Portfolio of Muhammad Arbaz, software engineer specializing in Flutter apps, WordPress websites, e-commerce, and full-stack web development.">
+    <meta name="theme-color" content="#0c1210">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
         :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --primary-light: #60a5fa;
-            --secondary: #1e40af;
-            --accent: #0ea5e9;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
+            --primary: #c6a66b;
+            --primary-dark: #987847;
+            --primary-light: #e3cc99;
+            --secondary: #607953;
+            --accent: #92b99b;
+            --dark: #0c1210;
+            --dark-light: #18211c;
+            --text-primary: #f3f1e9;
+            --text-secondary: #c4c8bd;
+            --text-muted: #929b90;
         }
 
         * {
@@ -675,14 +679,759 @@
 
         /* Scroll Animations */
         .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            opacity: 1;
+            transform: none;
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse at 50% -20%, rgba(59, 130, 246, 0.16), transparent 55%),
+                var(--dark);
+        }
+
+        .bg-animation {
+            pointer-events: none;
+            opacity: 0.55;
+        }
+
+        .container {
+            max-width: 1180px;
+        }
+
+        .site-nav {
+            position: sticky;
+            top: 16px;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin: 16px 0 0;
+            padding: 13px 18px;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 12px 36px rgba(2, 6, 23, 0.18);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -60px;
+            left: 16px;
+            z-index: 10;
+            padding: 10px 14px;
+            color: white;
+            border-radius: 10px;
+            background: var(--primary-dark);
+        }
+
+        .skip-link:focus {
+            top: 16px;
+        }
+
+        .nav-brand {
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            padding: 8px 11px;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: white;
+            background: rgba(96, 165, 250, 0.13);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        header {
+            padding: 86px 0 48px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            color: #bfdbfe;
+            border: 1px solid rgba(96, 165, 250, 0.24);
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.1);
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-eyebrow i {
+            color: #34d399;
+            font-size: 0.58rem;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 5.2rem);
+            letter-spacing: -0.055em;
+            line-height: 1.08;
+        }
+
+        .subtitle {
+            max-width: 760px;
+            margin: 14px auto 28px;
+            font-size: clamp(1.1rem, 2.8vw, 1.55rem);
+            line-height: 1.55;
+        }
+
+        .contact-buttons {
+            gap: 12px;
+        }
+
+        .btn {
+            min-height: 48px;
+        }
+
+        section {
+            margin: 76px 0;
+            scroll-margin-top: 105px;
+        }
+
+        .section-title {
+            margin-bottom: 36px;
+            font-size: clamp(1.8rem, 4vw, 2.35rem);
+            letter-spacing: -0.035em;
+        }
+
+        .summary-card,
+        .experience-card,
+        .skill-card,
+        .project-card,
+        .education-card {
+            border-color: rgba(148, 163, 184, 0.17);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.68), rgba(15, 23, 42, 0.72));
+            box-shadow: 0 18px 48px rgba(2, 6, 23, 0.16);
+        }
+
+        .summary-card {
+            padding: clamp(26px, 5vw, 44px);
+        }
+
+        .summary-card p {
+            font-size: 1.05rem;
+        }
+
+        .experience-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .experience-card {
+            padding: clamp(24px, 3.5vw, 34px);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-info h3 {
+            font-size: 1.35rem;
+        }
+
+        .experience-meta {
+            font-size: 0.96rem;
+        }
+
+        .experience-details {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: clamp(24px, 4vw, 32px);
+        }
+
+        .projects-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            --project-padding: clamp(24px, 4vw, 34px);
+            padding: var(--project-padding);
+        }
+
+        .project-preview {
+            position: relative;
+            z-index: 1;
+            aspect-ratio: 2.1 / 1;
+            margin: 0 calc(-1 * var(--project-padding)) 25px;
+            overflow: hidden;
+            background: #111827;
+        }
+
+        .project-preview img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.55s ease;
+        }
+
+        .project-preview--catalog {
+            aspect-ratio: 1.7 / 1;
+        }
+
+        .project-card:hover .project-preview img {
+            transform: scale(1.035);
+        }
+
+        .project-preview-caption {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            left: 12px;
+            width: fit-content;
+            padding: 6px 11px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.76);
+            font-size: 0.76rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .project-card h3 {
+            font-size: 1.35rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 22px;
+            color: #93c5fd;
+            font-size: 0.94rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            color: white;
+        }
+
+        .project-link i {
+            font-size: 0.84rem;
+        }
+
+        .education-card {
+            padding: clamp(28px, 5vw, 46px);
+        }
+
+        .footer-links {
+            gap: 18px;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            width: 48px;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .site-nav {
+                align-items: flex-start;
+                flex-direction: column;
+                top: 8px;
+                gap: 8px;
+                margin-top: 8px;
+                padding: 10px 12px;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 2px;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+
+            .nav-links a {
+                padding: 7px 8px;
+                font-size: 0.78rem;
+            }
+
+            header {
+                padding: 42px 0 24px;
+            }
+
+            .profile-section {
+                gap: 16px;
+                margin-bottom: 22px;
+            }
+
+            .profile-image-wrapper,
+            .profile-image,
+            .profile-placeholder {
+                width: 138px;
+                height: 138px;
+            }
+
+            .experience-grid,
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .contact-buttons > .btn {
+                min-width: 0;
+                justify-content: center;
+                padding: 12px 14px;
+                text-align: center;
+            }
+
+            .contact-buttons > a[href^="tel:"] {
+                grid-column: 1 / -1;
+            }
+
+            section {
+                margin: 50px 0;
+            }
+
+            .education-card {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 32px 0 20px;
+            }
+
+            .site-nav {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 7px;
+                padding: 10px 11px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0;
+            }
+
+            .nav-links a {
+                padding: 7px 4px;
+                font-size: 0.7rem;
+            }
+
+            .profile-section {
+                margin-bottom: 18px;
+            }
+
+            .profile-image-wrapper,
+            .profile-image,
+            .profile-placeholder {
+                width: 122px;
+                height: 122px;
+            }
+
+            .profile-image-wrapper::before {
+                inset: -7px;
+            }
+
+            .hero-eyebrow {
+                gap: 7px;
+                max-width: 100%;
+                margin-bottom: 14px;
+                padding: 7px 11px;
+                font-size: 0.75rem;
+            }
+
+            h1 {
+                font-size: clamp(2.45rem, 10vw, 2.8rem);
+                line-height: 1.04;
+                letter-spacing: -0.06em;
+            }
+
+            .subtitle {
+                margin: 11px auto 20px;
+                font-size: 1rem;
+                line-height: 1.55;
+            }
+
+            .contact-buttons {
+                gap: 9px;
+            }
+
+            .contact-buttons .btn {
+                min-height: 48px;
+                padding: 11px 8px;
+                font-size: 0.88rem;
+            }
+
+            .contact-buttons .btn i {
+                font-size: 0.88rem;
+            }
+
+            section {
+                margin: 44px 0;
+                scroll-margin-top: 112px;
+            }
+
+            .section-title {
+                margin-bottom: 28px;
+                font-size: 1.8rem;
+            }
+
+            .summary-card {
+                padding: 23px 21px;
+                border-radius: 22px;
+            }
+
+            .summary-card p {
+                font-size: 0.96rem;
+                line-height: 1.75;
+            }
+
+            .experience-card,
+            .skill-card,
+            .project-card {
+                padding: 22px;
+                border-radius: 22px;
+            }
+
+            .project-card {
+                --project-padding: 22px;
+            }
+
+            .project-preview {
+                margin-bottom: 20px;
+            }
+
+            .project-card h3 {
+                font-size: 1.22rem;
+            }
+
+            .project-card p,
+            .experience-details {
+                font-size: 0.91rem;
+            }
+
+            .education-card {
+                padding: 26px 22px;
+                border-radius: 22px;
+            }
+
+            .edu-icon {
+                width: 78px;
+                height: 78px;
+                border-radius: 20px;
+                font-size: 2.3rem;
+            }
+
+            .edu-content h3 {
+                font-size: 1.45rem;
+            }
+
+            footer {
+                margin-top: 66px;
+                padding: 38px 0;
+            }
+
+            .experience-header {
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .contact-buttons > .btn-primary,
+            .contact-buttons > .btn-download {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .site-nav {
+                display: none !important;
+            }
+
+            .summary-card,
+            .experience-card,
+            .skill-card,
+            .project-card,
+            .education-card {
+                background: white !important;
+                color: #111827 !important;
+                box-shadow: none !important;
+            }
+
+            .summary-card p,
+            .experience-details,
+            .experience-details li,
+            .skill-card li,
+            .project-card p,
+            .edu-courses {
+                color: #374151 !important;
+            }
+        }
+
+        @media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+            .bg-animation::before,
+            .bg-animation::after {
+                animation: none;
+            }
+        }
+
+        /* Signature palette: warm champagne accents over deep forest charcoal. */
+        body {
+            background:
+                radial-gradient(ellipse at 12% 4%, rgba(146, 185, 155, 0.09), transparent 34%),
+                radial-gradient(ellipse at 88% 8%, rgba(198, 166, 107, 0.1), transparent 32%),
+                var(--dark);
+        }
+
+        .bg-animation {
+            background: linear-gradient(145deg, #0b100e 0%, #101713 52%, #111713 100%);
+        }
+
+        .bg-animation::before {
+            background: radial-gradient(circle, rgba(198, 166, 107, 0.1) 0%, transparent 70%);
+        }
+
+        .bg-animation::after {
+            background: radial-gradient(circle, rgba(118, 157, 128, 0.11) 0%, transparent 70%);
+        }
+
+        .profile-image-wrapper::before {
+            background: linear-gradient(145deg, var(--primary), #f0dfb8 45%, var(--accent));
+        }
+
+        .profile-image {
+            border-color: var(--dark);
+        }
+
+        h1 {
+            background-image: linear-gradient(110deg, #f1ddb0 8%, #c6a66b 52%, #a9cbb0 100%);
+        }
+
+        .section-title {
+            background-image: linear-gradient(110deg, #e4c98f 0%, #c6a66b 62%, #a6c4a9 100%);
+        }
+
+        .section-title::after {
+            background: linear-gradient(90deg, var(--primary), rgba(146, 185, 155, 0.12));
+        }
+
+        .btn-primary {
+            color: #17160f;
+            background: linear-gradient(135deg, #e4cc98, #c6a66b);
+            box-shadow: 0 10px 30px rgba(198, 166, 107, 0.16);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 15px 38px rgba(198, 166, 107, 0.24);
+        }
+
+        .btn-download {
+            color: #101811;
+            background: linear-gradient(135deg, #b5d0b6, #83aa8e);
+            box-shadow: 0 10px 30px rgba(131, 170, 142, 0.16);
+        }
+
+        .btn-download:hover {
+            box-shadow: 0 15px 38px rgba(131, 170, 142, 0.24);
+        }
+
+        .btn-secondary {
+            border-color: rgba(196, 200, 189, 0.17);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(198, 166, 107, 0.56);
+            background: rgba(198, 166, 107, 0.07);
+        }
+
+        .hero-eyebrow {
+            color: #e4d6b7;
+            border-color: rgba(198, 166, 107, 0.24);
+            background: rgba(198, 166, 107, 0.07);
+        }
+
+        .hero-eyebrow i {
+            color: #9fc6a4;
+        }
+
+        .site-nav {
+            border-color: rgba(194, 190, 166, 0.13);
+            background: rgba(13, 19, 16, 0.86);
+            box-shadow: 0 12px 36px rgba(2, 6, 23, 0.28);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: #f1ddb0;
+            background: rgba(198, 166, 107, 0.09);
+        }
+
+        :focus-visible {
+            outline-color: var(--primary-light);
+        }
+
+        .skip-link {
+            color: #17160f;
+            background: var(--primary-light);
+        }
+
+        .summary-card,
+        .experience-card,
+        .skill-card,
+        .project-card,
+        .education-card {
+            border-color: rgba(190, 191, 169, 0.13);
+            background: linear-gradient(145deg, rgba(25, 34, 28, 0.86), rgba(16, 23, 19, 0.92));
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        .summary-card:hover,
+        .experience-card:hover,
+        .skill-card:hover,
+        .project-card:hover,
+        .education-card:hover {
+            border-color: rgba(198, 166, 107, 0.38);
+            box-shadow: 0 24px 52px rgba(0, 0, 0, 0.28);
+        }
+
+        .experience-card::before {
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .experience-icon,
+        .edu-icon {
+            color: #171910;
+            background: linear-gradient(145deg, #e1c98f, #a9c4a5);
+        }
+
+        .skill-icon {
+            background: linear-gradient(135deg, #e0c58a, #a9c4a5);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .skill-card::before {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .project-card::before {
+            background: linear-gradient(135deg, rgba(198, 166, 107, 0.055), rgba(146, 185, 155, 0.055));
+        }
+
+        .project-tag {
+            color: #e4d2a8;
+            border-color: rgba(198, 166, 107, 0.32);
+            background: rgba(198, 166, 107, 0.085);
+        }
+
+        .tech-tag {
+            color: #b7d2bb;
+            border-color: rgba(146, 185, 155, 0.24);
+            background: rgba(146, 185, 155, 0.075);
+        }
+
+        .project-link {
+            color: #d8c08b;
+        }
+
+        .project-link:hover {
+            color: #f3e3bd;
+        }
+
+        .project-preview-caption {
+            border-color: rgba(228, 214, 183, 0.18);
+            background: rgba(13, 19, 16, 0.84);
+        }
+
+        .footer-link {
+            border-color: rgba(190, 191, 169, 0.14);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .footer-link:hover {
+            color: #e4cc98;
+            border-color: rgba(198, 166, 107, 0.35);
+            background: rgba(198, 166, 107, 0.07);
+        }
+
+        footer {
+            border-top-color: rgba(190, 191, 169, 0.13);
         }
     </style>
 </head>
@@ -690,29 +1439,42 @@
     <div class="bg-animation"></div>
 
     <div class="container">
+        <a class="skip-link" href="#main-content">Skip to content</a>
+        <nav class="site-nav no-print" aria-label="Main navigation">
+            <a class="nav-brand" href="#top">Muhammad Arbaz</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+            </div>
+        </nav>
+
         <!-- Header -->
-        <header>
+        <header id="top">
             <div class="profile-section">
                 <div class="profile-image-wrapper">
-                    <img src="Arbaz .png" alt="Muhammad Arbaz" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="Arbaz .png" alt="Portrait of Muhammad Arbaz" class="profile-image" fetchpriority="high" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="profile-placeholder" style="display: none;">MA</div>
                 </div>
             </div>
             
+            <p class="hero-eyebrow"><i class="fas fa-circle" aria-hidden="true"></i> Mobile & web software development</p>
             <h1>Muhammad Arbaz</h1>
-            <p class="subtitle">Software Engineer & Flutter App Developer</p>
+            <p class="subtitle">Software Engineer · Flutter Developer · WordPress & Full-Stack Web Developer</p>
             
             <div class="contact-buttons">
                 <a href="mailto:arbazfareed786@gmail.com" class="btn btn-primary">
                     <i class="fas fa-envelope"></i> Get In Touch
                 </a>
-                <button onclick="window.print()" class="btn btn-download no-print">
+                <button onclick="window.print()" class="btn btn-download no-print" aria-label="Print or save portfolio as a PDF">
                     <i class="fas fa-download"></i> Download PDF
                 </button>
-                <a href="https://www.linkedin.com/in/muhammad-arbaz-678781231" target="_blank" class="btn btn-secondary">
+                <a href="https://www.linkedin.com/in/muhammad-arbaz-678781231" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-                <a href="https://github.com/arbazfareed" target="_blank" class="btn btn-secondary">
+                <a href="https://github.com/arbazfareed" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                     <i class="fab fa-github"></i> GitHub
                 </a>
                 <a href="tel:+923143054232" class="btn btn-secondary">
@@ -721,18 +1483,19 @@
             </div>
         </header>
 
+        <main id="main-content">
         <!-- Professional Summary -->
-        <section class="reveal">
+        <section class="reveal" id="about">
             <h2 class="section-title">About Me</h2>
             <div class="summary-card">
                 <p>
-                    Versatile Software Engineer with expertise in mobile and web development. Specialized in Flutter app development with 1+ years of experience building responsive, cross-platform mobile applications. Proficient in both front-end and back-end technologies, with hands-on experience in creating e-commerce platforms, enterprise solutions, and mobile apps. Skilled in UI/UX design, state management, Firebase integration, and modern development workflows. Detail-oriented professional with a strong interest in Microsoft Dynamics 365 and enterprise applications. A quick learner with excellent problem-solving abilities and a passion for creating impactful, user-centered solutions.
+                    Software Engineer with 2+ years of Flutter development experience, building cross-platform mobile apps and polished user experiences. I also create WordPress websites and e-commerce stores, and build web applications with HTML, CSS, JavaScript, Node.js, Express, and MongoDB. I enjoy turning practical ideas into reliable, responsive products across mobile and web.
                 </p>
             </div>
         </section>
 
         <!-- Experience -->
-        <section class="reveal">
+        <section class="reveal" id="experience">
             <h2 class="section-title">Experience</h2>
             <div class="experience-grid">
                 <div class="experience-card">
@@ -742,19 +1505,39 @@
                         </div>
                         <div class="experience-info">
                             <h3>Flutter App Developer</h3>
-                            <p class="experience-meta">1+ Year Experience</p>
+                            <p class="experience-meta">2+ Years · Mobile App Development</p>
                         </div>
                     </div>
                     <div class="experience-details">
                         <p>Specialized in building cross-platform mobile applications using Flutter framework with a focus on performance and user experience.</p>
                         <ul>
-                            <li>Developed and deployed multiple mobile applications using Flutter and Dart</li>
+                            <li>Built cross-platform mobile applications using Flutter and Dart</li>
                             <li>Implemented state management solutions using Riverpod and Provider</li>
                             <li>Integrated Firebase services for authentication, cloud storage, and real-time databases</li>
                             <li>Created responsive and adaptive UIs for both Android and iOS platforms</li>
                             <li>Collaborated on UI/UX design using Figma for prototyping and mockups</li>
                             <li>Built RESTful API integrations and handled complex data management</li>
-                            <li>Optimized app performance and implemented best practices for clean architecture</li>
+                            <li>Focused on responsive interfaces, app performance, and maintainable architecture</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fab fa-wordpress"></i>
+                        </div>
+                        <div class="experience-info">
+                            <h3>WordPress & Web Developer</h3>
+                            <p class="experience-meta">Websites · E-Commerce · Full-Stack</p>
+                        </div>
+                    </div>
+                    <div class="experience-details">
+                        <p>Build responsive websites and e-commerce experiences, alongside web applications using modern JavaScript technologies.</p>
+                        <ul>
+                            <li>Create and customize WordPress websites and e-commerce stores</li>
+                            <li>Build responsive front ends with HTML, CSS, and JavaScript</li>
+                            <li>Develop server-side applications and APIs with Node.js and Express</li>
+                            <li>Work with MongoDB for application data storage</li>
                         </ul>
                     </div>
                 </div>
@@ -762,7 +1545,7 @@
         </section>
 
         <!-- Core Competencies -->
-        <section class="reveal">
+        <section class="reveal" id="skills">
             <h2 class="section-title">Core Competencies</h2>
             <div class="skills-grid">
                 <div class="skill-card">
@@ -779,25 +1562,28 @@
                     <div class="skill-icon"><i class="fas fa-code"></i></div>
                     <h3>Web Development</h3>
                     <ul>
+                        <li>HTML, CSS & JavaScript</li>
+                        <li>WordPress Websites</li>
+                        <li>E-Commerce Stores</li>
                         <li>React & Next.js</li>
-                        <li>TypeScript & JavaScript</li>
-                        <li>HTML5 & CSS3</li>
-                        <li>Redux State Management</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-cogs"></i></div>
-                    <h3>Enterprise Solutions</h3>
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <h3>Backend & Data</h3>
                     <ul>
-                        <li>ASP.NET MVC & C#</li>
-                        <li>Microsoft Dynamics 365</li>
-                        <li>SQL Server & MongoDB</li>
+                        <li>Node.js & Express</li>
+                        <li>MongoDB</li>
+                        <li>REST API integration</li>
+                        <li>Firebase services</li>
                     </ul>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>Design & Tools</h3>
+                    <h3>Enterprise, Design & Tools</h3>
                     <ul>
+                        <li>ASP.NET MVC, C# & Dynamics 365</li>
+                        <li>SQL Server</li>
                         <li>Figma & UI/UX Design</li>
                         <li>Git & Version Control</li>
                         <li>Docker & Jenkins</li>
@@ -807,7 +1593,7 @@
         </section>
 
         <!-- Featured Projects -->
-        <section class="reveal">
+        <section class="reveal" id="projects">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
@@ -853,13 +1639,36 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <span class="project-tag">E-Commerce</span>
-                    <h3>E-Commerce Website</h3>
-                    <p>Responsive online store with product filters, shopping cart, and checkout simulation. Focused on mobile-first design and user experience.</p>
+                    <span class="project-tag">Recent Project · Completed</span>
+                    <div class="project-preview project-preview--catalog">
+                        <img src="assets/induscart-store.png" alt="IndusCartValley PK local-products e-commerce storefront" loading="lazy" decoding="async">
+                        <span class="project-preview-caption">Local products storefront</span>
+                    </div>
+                    <h3>IndusCartValley PK</h3>
+                    <p>Recently completed: a Pakistan-focused full-stack commerce platform with a React and Vite storefront, a role-protected admin portal, and an Express API backed by MongoDB. Features local and international catalogs, customer accounts, carts, wishlists, server-side search and filters, order tracking, and Cash on Delivery checkout.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Bootstrap</span>
-                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vite</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Capacitor</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/arbazfareed/e-commerce" target="_blank" rel="noopener noreferrer">
+                        View source on GitHub <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <span class="project-tag">Skincare & Grooming</span>
+                    <div class="project-preview">
+                        <img src="assets/skincare-storefront.png" alt="Skincare and grooming e-commerce storefront with a warm cream and gold color palette" loading="lazy" decoding="async">
+                        <span class="project-preview-caption">Skincare & grooming storefront</span>
+                    </div>
+                    <h3>GlowCare Store</h3>
+                    <p>WordPress e-commerce storefront concept for skincare and grooming products, styled with warm neutrals and refined gold accents.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">E-Commerce</span>
+                        <span class="tech-tag">Skincare</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -875,7 +1684,7 @@
         </section>
 
         <!-- Education -->
-        <section class="reveal">
+        <section class="reveal" id="education">
             <h2 class="section-title">Education</h2>
             <div class="education-card">
                 <div class="edu-icon">
@@ -883,7 +1692,7 @@
                 </div>
                 <div class="edu-content">
                     <h3>BS Software Engineering</h3>
-                    <p class="edu-meta">FAST-NUCES | 2020 – January 2025</p>
+                    <p class="edu-meta">FAST-NUCES | 2020–2024</p>
                     <p class="edu-courses">
                         <strong>Relevant Courses:</strong> Software Design, Web Development, Mobile App Development, Cloud Computing, CRM Systems, Database Management
                     </p>
@@ -891,26 +1700,28 @@
             </div>
         </section>
 
+        </main>
+
         <!-- Footer -->
         <footer>
             <div class="footer-links no-print">
-                <a href="mailto:arbazfareed786@gmail.com" class="footer-link" title="Email">
+                <a href="mailto:arbazfareed786@gmail.com" class="footer-link" title="Email" aria-label="Email Muhammad Arbaz">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/muhammad-arbaz-678781231" target="_blank" class="footer-link" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/muhammad-arbaz-678781231" target="_blank" rel="noopener noreferrer" class="footer-link" title="LinkedIn" aria-label="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/arbazfareed" target="_blank" class="footer-link" title="GitHub">
+                <a href="https://github.com/arbazfareed" target="_blank" rel="noopener noreferrer" class="footer-link" title="GitHub" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="tel:+923143054232" class="footer-link" title="Phone">
+                <a href="tel:+923143054232" class="footer-link" title="Phone" aria-label="Call Muhammad Arbaz">
                     <i class="fas fa-phone"></i>
                 </a>
             </div>
-            <button onclick="window.print()" class="btn btn-download no-print" style="margin: 20px 0;">
+            <button onclick="window.print()" class="btn btn-download no-print" style="margin: 20px 0;" aria-label="Print or save portfolio as a PDF">
                 <i class="fas fa-file-pdf"></i> Download as PDF
             </button>
-            <p style="color: var(--text-muted); margin-top: 20px;">&copy; 2025 Muhammad Arbaz. Crafted with passion.</p>
+            <p style="color: var(--text-muted); margin-top: 20px;">&copy; 2026 Muhammad Arbaz. Crafted with care.</p>
         </footer>
     </div>
 
